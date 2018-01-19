@@ -15,7 +15,6 @@ $(document).ready(function () {
             "photo": photo,
             "scores": answers
         };
-        console.log(newFriend.scores[0]);
         $.get("/api/friends", function (data) {
             var bestFriend;
             var highScore = 100;
@@ -35,7 +34,6 @@ $(document).ready(function () {
             $("#modal-img").attr("src", bestFriend.photo);
             $('#modal1').modal('open');
         });
-        console.log(newFriend);
         $.post("/api/friends", newFriend);
     });
 });
