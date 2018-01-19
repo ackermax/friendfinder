@@ -21,7 +21,7 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
                 var score = 0;
                 for (var j = 0; j < data[i]["scores[]"].length; j++) {
-                    score += Math.abs(answers[j] - data[i]["scores[]"][j]);
+                    score += Math.abs(answers[j] - Number(data[i]["scores[]"][j]));
                 }
                 console.log(score);
                 if (highScore > score) {
@@ -33,7 +33,8 @@ $(document).ready(function () {
             $("#modal-name").text(bestFriend.name);
             $("#modal-img").attr("src", bestFriend.photo);
             $('#modal1').modal('open');
+            $.post("/api/friends", newFriend);
         });
-        $.post("/api/friends", newFriend);
+        
     });
 });
